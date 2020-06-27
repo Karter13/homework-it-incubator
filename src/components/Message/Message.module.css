@@ -1,0 +1,44 @@
+.block {
+    position: relative;
+    text-align: start;
+    background-color: #716a8b;
+    width: 350px;
+    height: 85px;
+    border-radius: 10px 10px 10px 0;
+    padding-top: 15px;
+}
+.block:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 0 solid transparent;
+    border-right-width: 0px;
+    border-left-width: 30px;
+    border-bottom: 17px solid #716a8b;
+    bottom: 0;
+    left: -30px;
+}
+.name {
+    color: aqua;
+    padding-left: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+
+}
+.text {
+    color: antiquewhite;
+    padding-left: 15px;
+    font-weight: bold;
+}
+.time {
+    padding-top: 10px;
+    color: #c4c8cc;
+    padding-right: 15px;
+    font-weight: bold;
+}

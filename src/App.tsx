@@ -1,24 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Image} from "./components/Image/Image";
+import {Message} from "./components/Message/Message";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          <Image url='https://live.staticflickr.com/1170/5152497387_939ee3015a_b.jpg'/>
+          <Message myName='Michael' myText='I love React!!!' realTime='19.40' />
     </div>
   );
 }
