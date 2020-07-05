@@ -1,0 +1,20 @@
+.list {
+    width: 420px;
+    padding: 10px;
+    background-color: #716a8b;
+    border-radius: 10px;
+    margin: 10px;
+}
+.item {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.item button {
+    margin-left: 10px;
+}
+
+.name {
+    margin-right: 10px;
+    font-weight: bold;
+}
