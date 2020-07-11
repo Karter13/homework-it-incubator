@@ -3,6 +3,9 @@ import './App.css';
 import {Image} from "./components/Image/Image";
 import {Message} from "./components/Message/Message";
 import {Affairs, AffairsType} from "./components/Affairs/Affairs";
+import {Greeting} from "./components/Greeting/Greeting";
+import {v1} from "uuid";
+import {log} from "util";
 
 function App() {
     let [affairs, setAffairs] = useState<Array<AffairsType>>(
@@ -15,7 +18,22 @@ function App() {
         ]
     );
 
-    let [filter, setFilter] = useState('all')
+    let [filter, setFilter] = useState('all');
+    let [names, setNames] = useState([
+        {id: v1(), name: 'Maikl'}
+    ]);
+
+    function addName(name: string) {
+        if(name && name.trim()) {
+            alert(`Hello ${name}!!`);
+            let newName = {id: v1(), name: name};
+            let newNames = [newName, ...names];
+            setNames(newNames);
+        } else {
+            alert('Enter name please!!!')
+        }
+    }
+
 
     function removeBusiness(id: number) {
         let newAffairs = affairs.filter(b => b.id !== id );
@@ -46,6 +64,7 @@ function App() {
                      removeBusiness={removeBusiness}
                      filterAffairs={filterAffairs}
             />
+            <Greeting addName={addName} names={names}/>
         </div>
     );
 }
