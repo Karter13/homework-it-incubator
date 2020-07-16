@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import s from './Message.module.css'
 
 type MessagePropsType = {
@@ -10,10 +10,10 @@ type MessagePropsType = {
 export const Message: React.FC<MessagePropsType> = (props) => {
     return (
         <div className={s.block}>
-            <MessageName name={props.myName} />
+            <MessageName name={props.myName}/>
             <div className={s.content}>
-                <MessageText text={props.myText} />
-                <MessageTime time={props.realTime} />
+                <MessageText text={props.myText}/>
+                <MessageTime time={props.realTime}/>
             </div>
         </div>
     )
