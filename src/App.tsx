@@ -23,6 +23,7 @@ function App() {
     let [names, setNames] = useState<Array<NameType>>([
         {id: v1(), name: 'Maikl'}
     ]);
+    let [error, setError] = useState<string | null>(null);
 
     function addName(name: string) {
         if (name && name.trim()) {
@@ -31,10 +32,10 @@ function App() {
             let newNames = [newName, ...names];
             setNames(newNames);
         } else {
+            setError('error');
             alert('Enter name please!!!')
         }
     }
-
 
     function removeBusiness(id: number) {
         let newAffairs = affairs.filter(b => b.id !== id);
@@ -66,7 +67,11 @@ function App() {
                      removeBusiness={removeBusiness}
                      filterAffairs={filterAffairs}
             />
-            <Greeting addName={addName} names={names}/>
+            <Greeting addName={addName}
+                      names={names}
+                      error={error}
+                      setError={setError}
+            />
             <UniversalComponents/>
         </div>
     );

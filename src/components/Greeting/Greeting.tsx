@@ -10,6 +10,8 @@ export type NameType = {
 export type GreetingPropsType = {
     addName: (name: string) => void
     names: Array<NameType>
+    error: string | null
+    setError: (value: string | null) => any
 }
 
 export const Greeting: React.FC<GreetingPropsType> = (props) => {
@@ -25,6 +27,7 @@ export const Greeting: React.FC<GreetingPropsType> = (props) => {
     };
 
     const pressEnter = (event: KeyboardEvent<HTMLInputElement>) => {
+        props.setError(null);
         if(event.charCode === 13) {
             addNewName();
         }
@@ -35,6 +38,7 @@ export const Greeting: React.FC<GreetingPropsType> = (props) => {
             <Input onChange={onChangeHandler}
                    value={newNameTitle}
                    pressEnter={pressEnter}
+                   error={props.error}
             />
             <Button value={'Hello'} click={addNewName}/>
             <span>{`количество имен - ${props.names.length}`}</span>

@@ -5,6 +5,7 @@ export type InputProsType ={
     onChange: (value: string) => void
     value: string
     pressEnter?: (event: KeyboardEvent<HTMLInputElement>) => void
+    error?: string | null
 
 }
 
@@ -17,7 +18,7 @@ export const Input: React.FC<InputProsType> = (props) => {
 
     return (
         <div>
-            <input className={style.input} type="text"
+            <input className={props.error ? `${style.input} ${style.error}` : style.input} type="text"
                    value={props.value}
                    onChange={newText}
                    onKeyPress={props.pressEnter}
