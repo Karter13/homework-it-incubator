@@ -11,7 +11,7 @@ export type GreetingPropsType = {
     addName: (name: string) => void
     names: Array<NameType>
     error: string | null
-    setError: (value: string | null) => any
+    setError: (value: string | null) => void
 }
 
 export const Greeting: React.FC<GreetingPropsType> = (props) => {
