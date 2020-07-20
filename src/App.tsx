@@ -5,6 +5,7 @@ import {Message} from './components/Message/Message';
 import {Affairs, AffairsType} from './components/Affairs/Affairs';
 import {Greeting, NameType} from './components/Greeting/Greeting';
 import {v1} from 'uuid';
+import {UniversalComponents} from './components/UniversalComponents/UniversalComponents';
 
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
                      filterAffairs={filterAffairs}
             />
             <Greeting addName={addName} names={names}/>
+            <UniversalComponents/>
         </div>
     );
 }

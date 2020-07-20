@@ -7,14 +7,19 @@
 }
 .item {
     display: flex;
-    margin-bottom: 5px;
+    text-align: center;
+    align-items: center;
+    height: 35px;
 }
-
 .item button {
     margin-left: 10px;
 }
-
 .name {
     margin-right: 10px;
     font-weight: bold;
+}
+.buttonsBox {
+    display: flex;
+    text-align: center;
+    align-items: center;
 }
