@@ -8,7 +8,7 @@ import {v1} from 'uuid';
 import {UniversalComponents} from './components/UniversalComponents/UniversalComponents';
 
 
-function App() {
+export function App() {
     let [affairs, setAffairs] = useState<Array<AffairsType>>(
         [
             {id: 1, name: 'Job', priority: 'middle'},
@@ -77,4 +77,3 @@ function App() {
     );
 }
 
-export default App;
