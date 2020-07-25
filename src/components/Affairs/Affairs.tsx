@@ -29,7 +29,7 @@ export const Affairs: React.FC<AffairsPropsType> = (props) => {
                             <div key={a.id} className={s.item}>
                                 <div className={s.name}>{a.name}</div>
                                 <div className={s.mean}>{a.priority}</div>
-                                <Button click={deleteItem} value={'Delete'} filter={'delete'}/>
+                                <Button click={deleteItem} value={'Delete'} red={'delete'}/>
                             </div>
                         )
                     }
