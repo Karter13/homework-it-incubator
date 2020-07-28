@@ -1,10 +1,10 @@
 .nav {
-    background-color:  #716a8b;
-    /*background-color: darkgray;*/
+    background-color: darkgray;
     text-align: center;
     padding: 10px;
 }
 .nav .menu {
+    width: 100%;
     display: none;
 }
 .nav:hover .menu {

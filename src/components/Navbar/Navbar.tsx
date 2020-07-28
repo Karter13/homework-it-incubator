@@ -4,7 +4,7 @@ import styles from './Navbar.module.css'
 
 export const Navbar = () => {
     return (
-        <div className={styles.nav}>
+        <div className={styles.nav}> <span>Navbar</span>
             <div className={styles.menu} >
                 <div className={styles.item}>
                     <NavLink to={'/preJunior'} activeClassName={styles.activeLick}>PreJunior</NavLink>
