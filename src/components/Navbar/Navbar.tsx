@@ -1,17 +1,20 @@
 import {NavLink} from 'react-router-dom';
 import React from 'react';
+import styles from './Navbar.module.css'
 
 export const Navbar = () => {
     return (
-        <div>
-            <div>
-                <NavLink to={'/preJunior'}>PreJunior</NavLink>
-            </div>
-            <div>
-                <NavLink to={'/junior'}>Junior</NavLink>
-            </div>
-            <div>
-                <NavLink to={'/juniorPlus'}>JuniorPlus</NavLink>
+        <div> <h3>Pages</h3>
+            <div className={styles.nav}>
+                <div className={styles.item}>
+                    <NavLink to={'/preJunior'} activeClassName={styles.activeLick}>PreJunior</NavLink>
+                </div>
+                <div className={styles.item}>
+                    <NavLink to={'/junior'} activeClassName={styles.activeLick}>Junior</NavLink>
+                </div>
+                <div className={styles.item}>
+                    <NavLink to={'/juniorPlus'} activeClassName={styles.activeLick}>JuniorPlus</NavLink>
+                </div>
             </div>
         </div>
     )

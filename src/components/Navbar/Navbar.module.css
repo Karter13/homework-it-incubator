@@ -1,0 +1,15 @@
+.nav {
+    background-color:  #716a8b;
+    text-align: center;
+    padding: 10px;
+}
+
+.item a{
+    font-weight: bold;
+    color: #8b0710;
+    text-decoration: none;
+}
+
+.item a.activeLick {
+    color: #58ff16;
+}
