@@ -4,8 +4,8 @@ import styles from './Navbar.module.css'
 
 export const Navbar = () => {
     return (
-        <div> <h3>Pages</h3>
-            <div className={styles.nav}>
+        <div className={styles.nav}>
+            <div className={styles.menu} >
                 <div className={styles.item}>
                     <NavLink to={'/preJunior'} activeClassName={styles.activeLick}>PreJunior</NavLink>
                 </div>

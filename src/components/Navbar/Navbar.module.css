@@ -1,7 +1,14 @@
 .nav {
     background-color:  #716a8b;
+    /*background-color: darkgray;*/
     text-align: center;
     padding: 10px;
+}
+.nav .menu {
+    display: none;
+}
+.nav:hover .menu {
+    display: block;
 }
 
 .item a{
