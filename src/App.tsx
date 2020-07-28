@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Image} from './components/Image/Image';
-import {Message} from './components/Message/Message';
-import {Affairs, AffairsType} from './components/Affairs/Affairs';
-import {Greeting, NameType} from './components/Greeting/Greeting';
+import {AffairsType} from './components/PreJunior/Affairs/Affairs';
+import {NameType} from './components/PreJunior/Greeting/Greeting';
 import {v1} from 'uuid';
-import {UniversalComponents} from './components/UniversalComponents/UniversalComponents';
+import {Route} from 'react-router-dom';
+import {Navbar} from './components/Navbar/Navbar';
+import {Junior} from './components/Junior/Junior';
+import {JuniorPlus} from './components/JuniorPlus/JuniorPlus';
+import {PreJunior} from './components/PreJunior/PreJunior';
 
 
 export function App() {
@@ -59,21 +61,21 @@ export function App() {
 
     return (
         <div className="App">
-            <div className="message">
-                <Image url='https://live.staticflickr.com/1170/5152497387_939ee3015a_b.jpg'/>
-                <Message myName='Michael' myText='I love React!!!' realTime='19.40'/>
-            </div>
-            <Affairs affairs={tasksForAffairs}
-                     removeBusiness={removeBusiness}
-                     filterAffairs={filterAffairs}
-            />
-            <Greeting addName={addName}
-                      names={names}
-                      error={error}
-                      setError={setError}
-            />
-            <UniversalComponents/>
+            <Navbar/>
+            <Route path={'/preJunior'} render={() => <PreJunior
+                affairs={tasksForAffairs}
+                removeBusiness={removeBusiness}
+                filterAffairs={filterAffairs}
+                addName={addName}
+                names={names}
+                error={error}
+                setError={setError}
+            />}/>
+            <Route path={'/junior'} render={() => <Junior/>}/>
+            <Route path={'/juniorPlus'} render={() => <JuniorPlus/>}/>
         </div>
     );
 }
+
+
 

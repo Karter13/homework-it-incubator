@@ -1,6 +1,6 @@
 import s from './Affairs.module.css'
 import React from 'react';
-import {Button} from '../common/Button/Button';
+import {Button} from '../../common/Button/Button';
 
 
 export type AffairsType = {

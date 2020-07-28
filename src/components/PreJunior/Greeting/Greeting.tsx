@@ -1,7 +1,7 @@
 import React, {KeyboardEvent, useState} from 'react';
 import s from './Greeting.module.css'
-import {Input} from '../common/Input/Input';
-import {Button} from '../common/Button/Button';
+import {Input} from '../../common/Input/Input';
+import {Button} from '../../common/Button/Button';
 
 export type NameType = {
     id: string,
