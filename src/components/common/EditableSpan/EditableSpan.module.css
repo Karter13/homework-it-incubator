@@ -1,0 +1,7 @@
+.span {
+    font-weight: bold;
+    font-size: larger;
+    color: red;
+    display: inline-block;
+    margin: 15px 20px;
+}

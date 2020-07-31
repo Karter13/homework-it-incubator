@@ -6,7 +6,7 @@ export type InputProsType ={
     value: string
     pressEnter?: (event: KeyboardEvent<HTMLInputElement>) => void
     error?: string | null
-
+    onBlur?: () => void
 }
 
 export const Input: React.FC<InputProsType> = (props) => {
@@ -22,7 +22,10 @@ export const Input: React.FC<InputProsType> = (props) => {
                    value={props.value}
                    onChange={newText}
                    onKeyPress={props.pressEnter}
+                   autoFocus
+                   onBlur={props.onBlur}
             />
         </div>
     )
 };
+
