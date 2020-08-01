@@ -11,7 +11,7 @@ export const Junior = () => {
     let [value, setValue] = useState('EditableSpan');
     let [error, setError] = useState<string | null>(null);
     let [state, setState] = useState<Array<StateType>>([
-        {x: value, y: 10}
+        {x: 'Start', y: 1}
     ]);
 
     const onChange = (value: string) => {
@@ -22,7 +22,6 @@ export const Junior = () => {
             setError('error');
         }
     };
-
 
 
 
@@ -61,4 +60,4 @@ export const Junior = () => {
             <span>{state[0].x}</span>
         </div>
     )
-}
+};

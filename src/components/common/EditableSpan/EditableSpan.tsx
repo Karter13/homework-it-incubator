@@ -13,25 +13,23 @@ export type EditableSpanPropsType = {
 export const EditableSpan: React.FC<EditableSpanPropsType> = (props) => {
 
     let [editMode, setEditMode] = useState<boolean>(true);
-    let [newValue, setNewValue] = useState(props.value);
 
     const activatedEditMode = () => {
         setEditMode(false);
     };
     const deActivatedEditMode = () => {
         setEditMode(true);
-        props.onChange(newValue);
+        props.onChange(props.value);
     };
 
     const changeValue = (value: string) => {
-        setNewValue(value)
-
+        props.onChange(value)
     };
 
     return (
         editMode
             ? <span className={style.span} onDoubleClick={activatedEditMode}>{props.value}</span>
-            : <Input value={newValue}
+            : <Input value={props.value}
                      onChange={changeValue}
                      error={props.error}
                      onBlur={deActivatedEditMode}
