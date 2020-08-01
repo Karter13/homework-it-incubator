@@ -1,18 +1,11 @@
 import React, {useState} from 'react';
 import {EditableSpan} from '../common/EditableSpan/EditableSpan';
-
-export type StateType = {
-    x: string
-    y: number
-}
+import style from './Junior.module.css'
 
 export const Junior = () => {
 
     let [value, setValue] = useState('EditableSpan');
     let [error, setError] = useState<string | null>(null);
-    let [state, setState] = useState<Array<StateType>>([
-        {x: 'Start', y: 1}
-    ]);
 
     const onChange = (value: string) => {
         if (value.trim()) {
@@ -23,11 +16,12 @@ export const Junior = () => {
         }
     };
 
-
-
     function saveState<T>(key: string, state: T) {
         const stateAsString = JSON.stringify(state);
         localStorage.setItem(key, stateAsString)
+    }
+    function addDateForState() {
+        saveState('test', value);
     }
 
     function restoreState<T>(key: string, defaultState: T) {
@@ -35,29 +29,22 @@ export const Junior = () => {
         if (stateAsString !== null) defaultState = JSON.parse(stateAsString) as T;
         return defaultState;
     }
-
     function getDataFromStore() {
-        const newState: StateType = restoreState<StateType>('test', {x: '', y: 0});
-        const newStates = [newState, ...state];
-        console.log(newStates);
-
-        setState(newStates);
-
+        const newValue: string = restoreState<string>('test', '0');
+        console.log(newValue);
+        setValue(newValue);
     }
 
 
     return (
-        <div>
+        <div className={style.main}>
             <h3>Junior</h3>
             <EditableSpan value={value}
                           onChange={onChange}
                           error={error}
             />
-            <button onClick={() => {
-                saveState<StateType>('test', {x: value, y: 2})
-            }}>Save</button>
-            <button onClick={() => {getDataFromStore()}}>Restore</button>
-            <span>{state[0].x}</span>
+            <button onClick={ addDateForState }>Save</button>
+            <button onClick={ getDataFromStore }>Restore</button>
         </div>
     )
 };
