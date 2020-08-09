@@ -1,11 +1,38 @@
 import React, {useState} from 'react';
 import {EditableSpan} from '../common/EditableSpan/EditableSpan';
 import style from './Junior.module.css'
+import {Select} from '../common/Select/Select';
+import {Radio} from '../common/Radio/Radio';
+
+export type SelectionsType = {
+    id: number
+    value: string
+    name: string
+}
 
 export const Junior = () => {
 
-    let [value, setValue] = useState('EditableSpan');
-    let [error, setError] = useState<string | null>(null);
+    const [value, setValue] = useState('EditableSpan');
+    const [error, setError] = useState<string | null>(null);
+    const [parentValue, setParentValue] = useState<string | undefined>(undefined);
+    const [radioValue, setRadioValue] = useState<boolean>(false);
+
+    //junior Radio
+    const changeRadio = (value: boolean) => {
+        setRadioValue(!value);
+        console.log(radioValue)
+    };
+
+    //junior selector
+    const selections: Array<SelectionsType> = [
+        {id: 1, value: '1', name: 'React' },
+        {id: 2, value: '2', name: 'Redux' },
+        {id: 3, value: '3', name: 'JS' },
+        {id: 4, value: '4', name: 'Angular' },
+    ];
+    const onChangeSelect = (value: string) => {
+        setParentValue(value);
+    };
 
     const onChange = (value: string) => {
         if (value.trim()) {
@@ -45,6 +72,10 @@ export const Junior = () => {
             />
             <button onClick={ addDateForState }>Save</button>
             <button onClick={ getDataFromStore }>Restore</button>
+            <br/>
+            <Select onChange={onChangeSelect} value={parentValue} selections={selections}/>
+            <br/>
+            <Radio value={radioValue} onChange={changeRadio} name={'Maikl'}/>
         </div>
     )
 };
