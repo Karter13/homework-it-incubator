@@ -12,7 +12,7 @@ export type SelectionsType = {
 export type RadioType = {
     id: number
     name: string
-    checked: boolean
+    checked: any | boolean
 }
 
 export const Junior = () => {
@@ -27,7 +27,7 @@ export const Junior = () => {
     ]);
 
     //junior Radio
-    const changeRadio = (id: number, value: any) => {
+    const changeRadio = (id: number, value: any | boolean) => {
         radioValue.map(r => {
             if (r.id === id) {
                 r.checked = !r.checked;

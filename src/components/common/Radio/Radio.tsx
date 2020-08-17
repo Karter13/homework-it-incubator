@@ -4,7 +4,7 @@ import {RadioType} from '../../Junior/Junior';
 
 export type RadioPropsType = {
     radioValue: Array<RadioType>
-    onChange: (id: number, check:any) => void
+    onChange: (id: number, check:any | boolean) => void
 }
 
 export const Radio: React.FC<RadioPropsType> = (props) => {
