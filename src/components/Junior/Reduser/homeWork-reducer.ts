@@ -30,8 +30,10 @@ export const hwReducer = (state: Array<StateType>, action: ActionType) => {
                 });
                 return sortUsers;
             }
+            return state;
+        case 'CHECK':
+            return state.filter(u => u.age >= action.payload);
         default:
-            return state
+            throw new Error('Error!!!');
     }
-
 };
