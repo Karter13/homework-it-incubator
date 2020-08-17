@@ -1,3 +1,14 @@
 .main {
     text-align: center;
 }
+.user {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+.name {
+    margin-right: 15px;
+}
+.buttons {
+    margin: 10px;
+}

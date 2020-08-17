@@ -4,6 +4,7 @@ import style from './Junior.module.css'
 import {Select} from '../common/Select/Select';
 import {Radio} from '../common/Radio/Radio';
 import {filterUsersAC, hwReducer, sortUsersDownAC, sortUsersUpAC, StateType} from './Reduser/homeWork-reducer';
+import {Button} from '../common/Button/Button';
 
 export type SelectionsType = {
     id: number
@@ -35,15 +36,15 @@ export const Junior = () => {
 
     //sort Users
     const sortUp = () => {
-       const newUsers = hwReducer(users, sortUsersUpAC('up'));
+        const newUsers = hwReducer(users, sortUsersUpAC('up'));
         setUsers(newUsers);
     };
     const sortDown = () => {
-       const newUsers = hwReducer(users, sortUsersDownAC('down'));
+        const newUsers = hwReducer(users, sortUsersDownAC('down'));
         setUsers(newUsers);
     };
     const showPeopleWhoAreEighteenOrOlder = () => {
-       const newUsers = hwReducer(users, filterUsersAC(18));
+        const newUsers = hwReducer(users, filterUsersAC(18));
         setUsers(newUsers);
     };
 
@@ -114,17 +115,19 @@ export const Junior = () => {
             <br/>
 
             <Radio radioValue={radioValue} onChange={changeRadio}/>
+            <div className={style.buttons}>
+                <Button click={sortUp} value={'sortUp'}/>
+                <Button click={sortDown} value={'sortDown'}/>
+                <Button click={showPeopleWhoAreEighteenOrOlder} value={'>= 18'}/>
+            </div>
 
-            <button onClick={sortUp}>sortUp</button>
-            <button onClick={sortDown}>sortDown</button>
-            <button onClick={showPeopleWhoAreEighteenOrOlder}>show >= 18</button>
             <div>
                 {
                     users.map(u => {
                         return (
-                            <div key={u.id}>
-                                <div>{u.name}</div>
-                                <div>{u.age}</div>
+                            <div key={u.id} className={style.user}>
+                                <div className={style.name}>Name: {u.name}</div>
+                                <div className={style.age}>Age: {u.age}</div>
                             </div>
                         )
                     })
