@@ -1,18 +1,20 @@
-type StateType = {
+export type StateType = {
     id: string,
     name: string,
     age: number
 }
-type ActionType = {
+export type ActionType = {
     type: string,
     payload: any
 }
 
+const SORT = 'SORT';
+const CHECK = 'CHECK';
+
 export const hwReducer = (state: Array<StateType>, action: ActionType) => {
     switch (action.type) {
-        case 'SORT':
+        case SORT:
             if (action.payload === 'up') {
-                debugger
                 const sortUsers = [...state];
                 sortUsers.sort((p, n) => {
                     if (p.name < n.name) return -1;
@@ -21,7 +23,6 @@ export const hwReducer = (state: Array<StateType>, action: ActionType) => {
                 });
                 return sortUsers;
             } else if (action.payload === 'down') {
-                debugger
                 const sortUsers = [...state];
                 sortUsers.sort((p, n) => {
                     if (n.name < p.name) return -1;
@@ -31,9 +32,13 @@ export const hwReducer = (state: Array<StateType>, action: ActionType) => {
                 return sortUsers;
             }
             return state;
-        case 'CHECK':
+        case CHECK:
             return state.filter(u => u.age >= action.payload);
         default:
             throw new Error('Error!!!');
     }
 };
+
+export const sortUsersUpAC = (payload: any): ActionType =>( {type: SORT, payload: payload});
+export const sortUsersDownAC = (payload: any): ActionType =>( {type: SORT, payload: payload});
+export const filterUsersAC = (payload: any): ActionType =>( {type: CHECK, payload: payload});

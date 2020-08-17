@@ -3,6 +3,7 @@ import {EditableSpan} from '../common/EditableSpan/EditableSpan';
 import style from './Junior.module.css'
 import {Select} from '../common/Select/Select';
 import {Radio} from '../common/Radio/Radio';
+import {filterUsersAC, hwReducer, sortUsersDownAC, sortUsersUpAC, StateType} from './Reduser/homeWork-reducer';
 
 export type SelectionsType = {
     id: number
@@ -25,6 +26,26 @@ export const Junior = () => {
         {id: 2, name: 'Radio2', checked: false},
         {id: 3, name: 'Radio3', checked: false},
     ]);
+    const [users, setUsers] = useState<Array<StateType>>([
+        {id: '1', name: 'Maikl', age: 44},
+        {id: '2', name: 'Anna', age: 41},
+        {id: '3', name: 'Alex', age: 22},
+        {id: '4', name: 'Masha', age: 15},
+    ]);
+
+    //sort Users
+    const sortUp = () => {
+       const newUsers = hwReducer(users, sortUsersUpAC('up'));
+        setUsers(newUsers);
+    };
+    const sortDown = () => {
+       const newUsers = hwReducer(users, sortUsersDownAC('down'));
+        setUsers(newUsers);
+    };
+    const showPeopleWhoAreEighteenOrOlder = () => {
+       const newUsers = hwReducer(users, filterUsersAC(18));
+        setUsers(newUsers);
+    };
 
     //junior Radio
     const changeRadio = (id: number, value: any | boolean) => {
@@ -37,7 +58,6 @@ export const Junior = () => {
             }
         });
     };
-
     //junior selector
     const selections: Array<SelectionsType> = [
         {id: 1, value: '1', name: 'React'},
@@ -94,6 +114,23 @@ export const Junior = () => {
             <br/>
 
             <Radio radioValue={radioValue} onChange={changeRadio}/>
+
+            <button onClick={sortUp}>sortUp</button>
+            <button onClick={sortDown}>sortDown</button>
+            <button onClick={showPeopleWhoAreEighteenOrOlder}>show >= 18</button>
+            <div>
+                {
+                    users.map(u => {
+                        return (
+                            <div key={u.id}>
+                                <div>{u.name}</div>
+                                <div>{u.age}</div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
         </div>
     )
 };
