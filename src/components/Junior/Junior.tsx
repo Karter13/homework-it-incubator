@@ -3,7 +3,12 @@ import {EditableSpan} from '../common/EditableSpan/EditableSpan';
 import style from './Junior.module.css'
 import {Select} from '../common/Select/Select';
 import {Radio} from '../common/Radio/Radio';
-import {filterUsersAC, hwReducer, sortUsersDownAC, sortUsersUpAC, StateType} from './Reduser/homeWork-reducer';
+import {
+    filterUsersAC,
+    hwReducer,
+    sortUsersUpAndDownAC,
+    StateType
+} from './Reduser/homeWork-reducer';
 import {Button} from '../common/Button/Button';
 
 export type SelectionsType = {
@@ -36,11 +41,11 @@ export const Junior = () => {
 
     //sort Users
     const sortUp = () => {
-        const newUsers = hwReducer(users, sortUsersUpAC('up'));
+        const newUsers = hwReducer(users, sortUsersUpAndDownAC('up'));
         setUsers(newUsers);
     };
     const sortDown = () => {
-        const newUsers = hwReducer(users, sortUsersDownAC('down'));
+        const newUsers = hwReducer(users, sortUsersUpAndDownAC('down'));
         setUsers(newUsers);
     };
     const showPeopleWhoAreEighteenOrOlder = () => {

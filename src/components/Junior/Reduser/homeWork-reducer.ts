@@ -39,6 +39,5 @@ export const hwReducer = (state: Array<StateType>, action: ActionType) => {
     }
 };
 
-export const sortUsersUpAC = (payload: any): ActionType =>( {type: SORT, payload: payload});
-export const sortUsersDownAC = (payload: any): ActionType =>( {type: SORT, payload: payload});
+export const sortUsersUpAndDownAC = (payload: any): ActionType =>( {type: SORT, payload: payload});
 export const filterUsersAC = (payload: any): ActionType =>( {type: CHECK, payload: payload});
