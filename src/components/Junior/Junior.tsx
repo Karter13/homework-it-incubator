@@ -10,6 +10,7 @@ import {
     StateType
 } from './Reduser/homeWork-reducer';
 import {Button} from '../common/Button/Button';
+import moment from 'moment'
 
 export type SelectionsType = {
     id: number
@@ -137,6 +138,11 @@ export const Junior = () => {
                         )
                     })
                 }
+            </div>
+
+            <div>
+                {moment().format('LTS')}
+                <button>update time</button>
             </div>
 
         </div>
