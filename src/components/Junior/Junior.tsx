@@ -10,7 +10,8 @@ import {
     StateType
 } from './Reduser/homeWork-reducer';
 import {Button} from '../common/Button/Button';
-import moment from 'moment'
+import moment from 'moment';
+
 
 export type SelectionsType = {
     id: number
@@ -39,6 +40,32 @@ export const Junior = () => {
         {id: '3', name: 'Alex', age: 22},
         {id: '4', name: 'Masha', age: 15},
     ]);
+
+    //state for timer
+    const [clock, setClock] = useState(moment().format('LTS'));
+    const [timerId, setTimerId] = useState<number>(0);
+    const [date, setDate] = useState<boolean>(false);
+
+    //timer
+    const startTimer = () => {
+        clearInterval(timerId);
+        let interval = setInterval(() => {
+            setClock(moment().format('LTS'))
+        }, 1000);
+        setTimerId(+interval)
+    };
+    const stopTimer = () => {
+        clearInterval(timerId);
+        // setTimerId(0);
+    };
+    const showDate = () => {
+        setDate(true);
+        console.log('true')
+    };
+    const hideDate = () => {
+        setDate(false);
+        console.log('false')
+    };
 
     //sort Users
     const sortUp = () => {
@@ -140,9 +167,15 @@ export const Junior = () => {
                 }
             </div>
 
-            <div>
-                {moment().format('LTS')}
-                <button>update time</button>
+            <div className={style.timer}>
+
+                <div className={style.clock} onMouseOver={showDate} onMouseOut={hideDate}>
+                    {clock}
+                    {date && <div className={style.date}>{moment().format('Do MMMM YYYY')}</div>}
+                </div>
+
+                <Button click={startTimer} value={'UPDATE'}/>
+                <Button click={stopTimer} value={'STOP'}/>
             </div>
 
         </div>

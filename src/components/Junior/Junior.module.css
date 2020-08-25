@@ -1,14 +1,38 @@
 .main {
     text-align: center;
 }
+
 .user {
     display: flex;
     justify-content: center;
     font-weight: bold;
 }
+
 .name {
     margin-right: 15px;
 }
+
 .buttons {
     margin: 10px;
+}
+
+.timer {
+    margin: 20px;
+}
+.clock {
+    cursor: pointer;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 30px;
+}
+.date {
+    margin: 0 auto;
+    height: 80px;
+    width: 30%;
+    line-height: 70px;
+    font-weight: bold;
+    font-size: 30px;
+    color:#FF39CC;
+    border-radius: 20px;
+    background-color: #58ff16;
 }
