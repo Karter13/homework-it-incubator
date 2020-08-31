@@ -11,6 +11,7 @@ import {
 } from './Reduser/homeWork-reducer';
 import {Button} from '../common/Button/Button';
 import moment from 'moment';
+import {Preloader} from '../common/Preloader/Preloader';
 
 
 export type SelectionsType = {
@@ -135,49 +136,56 @@ export const Junior = () => {
 
 
     return (
-        <div className={style.main}>
-            <h3>Junior</h3>
-            <EditableSpan value={value}
-                          onChange={onChange}
-                          error={error}
-            />
-            <button onClick={addDateForState}>Save</button>
-            <button onClick={getDataFromStore}>Restore</button>
-            <br/>
-            <Select onChange={onChangeSelect} value={parentValue} selections={selections}/>
-            <br/>
-
-            <Radio radioValue={radioValue} onChange={changeRadio}/>
-            <div className={style.buttons}>
-                <Button click={sortUp} value={'sortUp'}/>
-                <Button click={sortDown} value={'sortDown'}/>
-                <Button click={showPeopleWhoAreEighteenOrOlder} value={'>= 18'}/>
-            </div>
-
+        <>
             <div>
-                {
-                    users.map(u => {
-                        return (
-                            <div key={u.id} className={style.user}>
-                                <div className={style.name}>Name: {u.name}</div>
-                                <div className={style.age}>Age: {u.age}</div>
-                            </div>
-                        )
-                    })
-                }
+                <Preloader/>
             </div>
 
-            <div className={style.timer}>
+            <div className={style.main}>
+                <h3>Junior</h3>
+                <EditableSpan value={value}
+                              onChange={onChange}
+                              error={error}
+                />
+                <button onClick={addDateForState}>Save</button>
+                <button onClick={getDataFromStore}>Restore</button>
+                <br/>
+                <Select onChange={onChangeSelect} value={parentValue} selections={selections}/>
+                <br/>
 
-                <div className={style.clock} onMouseOver={showDate} onMouseOut={hideDate}>
-                    {clock}
-                    {date && <div className={style.date}>{moment().format('Do MMMM YYYY')}</div>}
+                <Radio radioValue={radioValue} onChange={changeRadio}/>
+                <div className={style.buttons}>
+                    <Button click={sortUp} value={'sortUp'}/>
+                    <Button click={sortDown} value={'sortDown'}/>
+                    <Button click={showPeopleWhoAreEighteenOrOlder} value={'>= 18'}/>
                 </div>
 
-                <Button click={startTimer} value={'UPDATE'}/>
-                <Button click={stopTimer} value={'STOP'}/>
-            </div>
+                <div>
+                    {
+                        users.map(u => {
+                            return (
+                                <div key={u.id} className={style.user}>
+                                    <div className={style.name}>Name: {u.name}</div>
+                                    <div className={style.age}>Age: {u.age}</div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
 
-        </div>
+                <div className={style.timer}>
+
+                    <div className={style.clock} onMouseOver={showDate} onMouseOut={hideDate}>
+                        {clock}
+                        {date && <div className={style.date}>{moment().format('Do MMMM YYYY')}</div>}
+                    </div>
+
+                    <Button click={startTimer} value={'UPDATE'}/>
+                    <Button click={stopTimer} value={'STOP'}/>
+                </div>
+
+            </div>
+        </>
     )
 };
+
