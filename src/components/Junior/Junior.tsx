@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {EditableSpan} from '../common/EditableSpan/EditableSpan';
 import style from './Junior.module.css'
 import {Select} from '../common/Select/Select';
@@ -6,12 +6,14 @@ import {Radio} from '../common/Radio/Radio';
 import {
     filterUsersAC,
     hwReducer,
-    sortUsersUpAndDownAC,
-    StateType
+    sortUsersUpAndDownAC, StateType,
 } from './Reduser/homeWork-reducer';
 import {Button} from '../common/Button/Button';
 import moment from 'moment';
 import {Preloader} from '../common/Preloader/Preloader';
+import {GlobalStateType} from '../../redux/redux-store';
+import {connect} from 'react-redux';
+import {setLoading} from '../../redux/junior-reducer';
 
 
 export type SelectionsType = {
@@ -25,7 +27,16 @@ export type RadioType = {
     checked: any | boolean
 }
 
-export const Junior = () => {
+//типизация пропсов
+type ChangeLoadingType = {
+    setLoading: (loading: boolean) => void
+}
+type LoadingType = {
+    loading: boolean
+}
+type JuniorPropsType = ChangeLoadingType & LoadingType
+
+const Junior: React.FC<JuniorPropsType> = (props) => {
 
     const [value, setValue] = useState('EditableSpan');
     const [error, setError] = useState<string | null>(null);
@@ -134,6 +145,7 @@ export const Junior = () => {
         setValue(newValue);
     }
 
+    // useEffect(() => {console.log(props.loading)})
 
     return (
         <>
@@ -189,3 +201,9 @@ export const Junior = () => {
     )
 };
 
+const mapStateToProps = (store: GlobalStateType) => {
+    return {
+        loading: store.juniorPage.loading
+    }
+};
+export default connect(mapStateToProps, {setLoading})(Junior)

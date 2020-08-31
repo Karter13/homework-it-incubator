@@ -8,7 +8,7 @@ let reducers = combineReducers({
     juniorPage: juniorReducer
 });
 
-export type StateType = ReturnType<typeof reducers>;
+export type GlobalStateType = ReturnType<typeof reducers>;
 
 export let store = createStore(reducers);
 

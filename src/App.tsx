@@ -5,7 +5,7 @@ import {NameType} from './components/PreJunior/Greeting/Greeting';
 import {v1} from 'uuid';
 import {Route} from 'react-router-dom';
 import {Navbar} from './components/Navbar/Navbar';
-import {Junior} from './components/Junior/Junior';
+import Junior from './components/Junior/Junior';
 import {JuniorPlus} from './components/JuniorPlus/JuniorPlus';
 import {PreJunior} from './components/PreJunior/PreJunior';
 
