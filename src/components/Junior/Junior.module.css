@@ -36,3 +36,8 @@
     border-radius: 20px;
     background-color: #58ff16;
 }
+
+.loader {
+    display: flex;
+    justify-content: center;
+}
