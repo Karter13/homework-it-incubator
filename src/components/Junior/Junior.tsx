@@ -72,11 +72,9 @@ const Junior: React.FC<JuniorPropsType> = (props) => {
     };
     const showDate = () => {
         setDate(true);
-        console.log('true')
     };
     const hideDate = () => {
         setDate(false);
-        console.log('false')
     };
 
     //sort Users
@@ -129,9 +127,11 @@ const Junior: React.FC<JuniorPropsType> = (props) => {
         const stateAsString = JSON.stringify(state);
         localStorage.setItem(key, stateAsString)
     }
+
     function addDateForState() {
         saveState('test', value);
     }
+
     function restoreState<T>(key: string, defaultState: T) {
         const stateAsString = localStorage.getItem(key);
         if (stateAsString !== null) defaultState = JSON.parse(stateAsString) as T;
@@ -147,70 +147,65 @@ const Junior: React.FC<JuniorPropsType> = (props) => {
     //LOADER
     function showLoader() {
         props.setLoading(true);
-    }
-
-    useEffect(() => {
-        console.log('loader')
         setTimeout(() => {
             props.setLoading(false);
-        }, 3000)
-    }, [props.loading]);
+        }, 10000)
+    }
 
     return (
         <>
             {
-                props.loading ? <Preloader/> :
+                props.loading
+                    ? <Preloader/>
+                    : <div className={style.main}>
+                        <h3>Junior</h3>
 
-
-                <div className={style.main}>
-                    <h3>Junior</h3>
-
-                    <div className={style.loader}>
-                        <Button click={showLoader} value={'LOADER'}/>
-                    </div>
-
-                    <EditableSpan value={value}
-                                  onChange={onChange}
-                                  error={error}
-                    />
-                    <button onClick={addDateForState}>Save</button>
-                    <button onClick={getDataFromStore}>Restore</button>
-                    <br/>
-                    <Select onChange={onChangeSelect} value={parentValue} selections={selections}/>
-                    <br/>
-
-                    <Radio radioValue={radioValue} onChange={changeRadio}/>
-                    <div className={style.buttons}>
-                        <Button click={sortUp} value={'sortUp'}/>
-                        <Button click={sortDown} value={'sortDown'}/>
-                        <Button click={showPeopleWhoAreEighteenOrOlder} value={'>= 18'}/>
-                    </div>
-
-                    <div>
-                        {
-                            users.map(u => {
-                                return (
-                                    <div key={u.id} className={style.user}>
-                                        <div className={style.name}>Name: {u.name}</div>
-                                        <div className={style.age}>Age: {u.age}</div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-
-                    <div className={style.timer}>
-
-                        <div className={style.clock} onMouseOver={showDate} onMouseOut={hideDate}>
-                            {clock}
-                            {date && <div className={style.date}>{moment().format('Do MMMM YYYY')}</div>}
+                        <div className={style.loader}>
+                            <Button click={showLoader} value={'LOADER'}/>
                         </div>
 
-                        <Button click={startTimer} value={'UPDATE'}/>
-                        <Button click={stopTimer} value={'STOP'}/>
-                    </div>
+                        <EditableSpan value={value}
+                                      onChange={onChange}
+                                      error={error}
+                        />
+                        <button onClick={addDateForState}>Save</button>
+                        <button onClick={getDataFromStore}>Restore</button>
+                        <br/>
+                        <Select onChange={onChangeSelect} value={parentValue} selections={selections}/>
+                        <br/>
 
-                </div>
+                        <Radio radioValue={radioValue} onChange={changeRadio}/>
+                        <div className={style.buttons}>
+                            <Button click={sortUp} value={'sortUp'}/>
+                            <Button click={sortDown} value={'sortDown'}/>
+                            <Button click={showPeopleWhoAreEighteenOrOlder} value={'>= 18'}/>
+                        </div>
+
+                        <div>
+                            {
+                                users.map(u => {
+                                    return (
+                                        <div key={u.id} className={style.user}>
+                                            <div className={style.name}>Name: {u.name}</div>
+                                            <div className={style.age}>Age: {u.age}</div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+
+                        <div className={style.timer}>
+
+                            <div className={style.clock} onMouseOver={showDate} onMouseOut={hideDate}>
+                                {clock}
+                                {date && <div className={style.date}>{moment().format('Do MMMM YYYY')}</div>}
+                            </div>
+
+                            <Button click={startTimer} value={'UPDATE'}/>
+                            <Button click={stopTimer} value={'STOP'}/>
+                        </div>
+
+                    </div>
             }
         </>
     )
