@@ -1,19 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {EditableSpan} from '../common/EditableSpan/EditableSpan';
 import style from './Junior.module.css'
 import {Select} from '../common/Select/Select';
 import {Radio} from '../common/Radio/Radio';
-import {
-    filterUsersAC,
-    hwReducer,
-    sortUsersUpAndDownAC, StateType,
-} from './Reduser/homeWork-reducer';
+import {filterUsersAC, hwReducer, sortUsersUpAndDownAC, StateType,} from './Reduser/homeWork-reducer';
 import {Button} from '../common/Button/Button';
 import moment from 'moment';
 import {Preloader} from '../common/Preloader/Preloader';
 import {GlobalStateType} from '../../redux/redux-store';
 import {connect} from 'react-redux';
 import {setLoading} from '../../redux/junior-reducer';
+import {Range} from '../common/Range/Range';
 
 
 export type SelectionsType = {
@@ -57,6 +54,15 @@ const Junior: React.FC<JuniorPropsType> = (props) => {
     const [clock, setClock] = useState(moment().format('LTS'));
     const [timerId, setTimerId] = useState<number>(0);
     const [date, setDate] = useState<boolean>(false);
+
+    //state for Range
+    const [valueRange, setValueRange] = useState<number | number[]>(1);
+
+    //Range
+    const onChangeRange = useCallback( (event: any, newValue: number | number[]) => {
+        setValueRange(newValue);
+    }, [] );
+
 
     //timer
     const startTimer = () => {
@@ -204,6 +210,12 @@ const Junior: React.FC<JuniorPropsType> = (props) => {
                             <Button click={startTimer} value={'UPDATE'}/>
                             <Button click={stopTimer} value={'STOP'}/>
                         </div>
+
+                        <Range minValue={0}
+                               maxValue={100}
+                               value={valueRange}
+                               onChange={onChangeRange}
+                        />
 
                     </div>
             }

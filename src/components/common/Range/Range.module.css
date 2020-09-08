@@ -1,0 +1,19 @@
+.sliderBlock {
+    margin: 0 auto;
+    width: 30%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sliderBlock .text {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.wrapSlider {
+    display: flex;
+}
+
+.slider {
+    margin: 10px;
+}
