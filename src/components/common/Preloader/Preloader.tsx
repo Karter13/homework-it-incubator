@@ -4,10 +4,10 @@ import style from './Preloader.module.css'
 
 export type PreloaderPropsType = {}
 
-export const Preloader: React.FC<PreloaderPropsType> = (props) => {
+export const Preloader: React.FC<PreloaderPropsType> = React.memo( (props) => {
     return (
         <div className={style.loader}>
             <img src={preloader} alt={'preloader'} className={style.img}/>
         </div>
     )
-};
+});

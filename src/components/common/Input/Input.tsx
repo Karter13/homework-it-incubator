@@ -9,7 +9,7 @@ export type InputProsType ={
     onBlur?: () => void
 }
 
-export const Input: React.FC<InputProsType> = (props) => {
+export const Input: React.FC<InputProsType> = React.memo( (props) => {
 
     const newText = (e: ChangeEvent<HTMLInputElement>) => {
         props.onChange(e.currentTarget.value)
@@ -27,5 +27,5 @@ export const Input: React.FC<InputProsType> = (props) => {
             />
         </div>
     )
-};
+});
 

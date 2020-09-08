@@ -7,7 +7,7 @@ export type RadioPropsType = {
     onChange: (id: number, check:any | boolean) => void
 }
 
-export const Radio: React.FC<RadioPropsType> = (props) => {
+export const Radio: React.FC<RadioPropsType> = React.memo( (props) => {
 
     return (
         <div className={styles.radio}>
@@ -30,4 +30,4 @@ export const Radio: React.FC<RadioPropsType> = (props) => {
             }
         </div>
     )
-};
+});

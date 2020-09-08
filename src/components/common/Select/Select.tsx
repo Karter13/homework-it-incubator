@@ -9,7 +9,7 @@ export type SelectPropsType = {
 
 }
 
-export const Select: React.FC<SelectPropsType> = (props) => {
+export const Select: React.FC<SelectPropsType> = React.memo( (props) => {
 
     let option = props.selections
         .map(s => <option key={s.id} value={s.value}>{s.name}</option>);
@@ -23,4 +23,4 @@ export const Select: React.FC<SelectPropsType> = (props) => {
             {option}
         </select>
     )
-}
+});

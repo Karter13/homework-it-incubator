@@ -6,7 +6,7 @@ export type CheckboxPropsType = {
     changeValue: (value: boolean) => void
 }
 
-export const Checkbox: React.FC<CheckboxPropsType> = (props) => {
+export const Checkbox: React.FC<CheckboxPropsType> = React.memo((props) => {
 
     const changeStatus = (e: ChangeEvent<HTMLInputElement>) => {
         props.changeValue(e.currentTarget.checked)
@@ -21,4 +21,4 @@ export const Checkbox: React.FC<CheckboxPropsType> = (props) => {
             />
         </div>
     )
-};
+});

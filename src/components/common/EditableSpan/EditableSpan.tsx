@@ -10,7 +10,7 @@ export type EditableSpanPropsType = {
 
 }
 
-export const EditableSpan: React.FC<EditableSpanPropsType> = (props) => {
+export const EditableSpan: React.FC<EditableSpanPropsType> = React.memo( (props) => {
 
     let [editMode, setEditMode] = useState<boolean>(true);
 
@@ -35,6 +35,6 @@ export const EditableSpan: React.FC<EditableSpanPropsType> = (props) => {
                      onBlur={deActivatedEditMode}
             />
     )
-};
+});
 
 
