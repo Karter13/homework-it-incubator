@@ -10,12 +10,11 @@ export type RangePropsType = {
     onChange: (event: any, newValue: number | number[]) => void
 }
 
-export const Range: React.FC<RangePropsType> = React.memo( (props) => {
+export const Range: React.FC<RangePropsType> = React.memo((props) => {
 
     const onChangeRange = useCallback((event: any, newValue: number | number[]) => {
-        console.log(newValue);
         props.onChange(event, newValue);
-    }, [ props.onChange ]);
+    }, [props.onChange]);
 
     return (
         <div className={style.sliderBlock}>
@@ -37,6 +36,6 @@ export const Range: React.FC<RangePropsType> = React.memo( (props) => {
 
         </div>
     );
-} );
+});
 
 

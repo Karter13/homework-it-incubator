@@ -65,40 +65,40 @@ const Junior: React.FC<JuniorPropsType> = (props) => {
 
 
     //timer
-    const startTimer = () => {
+    const startTimer = useCallback(() => {
         clearInterval(timerId);
         let interval = setInterval(() => {
             setClock(moment().format('LTS'))
         }, 1000);
         setTimerId(+interval)
-    };
-    const stopTimer = () => {
+    }, []);
+    const stopTimer = useCallback(() => {
         clearInterval(timerId);
         // setTimerId(0);
-    };
-    const showDate = () => {
+    }, [timerId]);
+    const showDate = useCallback(() => {
         setDate(true);
-    };
-    const hideDate = () => {
+    }, []);
+    const hideDate = useCallback(() => {
         setDate(false);
-    };
+    }, []);
 
     //sort Users
-    const sortUp = () => {
+    const sortUp = useCallback(() => {
         const newUsers = hwReducer(users, sortUsersUpAndDownAC('up'));
         setUsers(newUsers);
-    };
-    const sortDown = () => {
+    }, [users]);
+    const sortDown = useCallback(() => {
         const newUsers = hwReducer(users, sortUsersUpAndDownAC('down'));
         setUsers(newUsers);
-    };
-    const showPeopleWhoAreEighteenOrOlder = () => {
+    }, [users]);
+    const showPeopleWhoAreEighteenOrOlder = useCallback(() => {
         const newUsers = hwReducer(users, filterUsersAC(18));
         setUsers(newUsers);
-    };
+    }, []);
 
     //junior Radio
-    const changeRadio = (id: number, value: any | boolean) => {
+    const changeRadio = useCallback((id: number, value: any | boolean) => {
         radioValue.map(r => {
             if (r.id === id) {
                 r.checked = !r.checked;
@@ -107,7 +107,7 @@ const Junior: React.FC<JuniorPropsType> = (props) => {
                 r.checked = false;
             }
         });
-    };
+    }, []);
     //junior selector
     const selections: Array<SelectionsType> = [
         {id: 1, value: '1', name: 'React'},
@@ -115,18 +115,18 @@ const Junior: React.FC<JuniorPropsType> = (props) => {
         {id: 3, value: '3', name: 'JS'},
         {id: 4, value: '4', name: 'Angular'},
     ];
-    const onChangeSelect = (value: string) => {
+    const onChangeSelect = useCallback((value: string) => {
         setParentValue(value);
-    };
+    }, []);
 
-    const onChange = (value: string) => {
+    const onChange = useCallback((value: string) => {
         if (value.trim()) {
             setValue(value);
         } else {
             alert('error');
             setError('error');
         }
-    };
+    }, [value]);
 
     //localStorage
     function saveState<T>(key: string, state: T) {
@@ -144,19 +144,18 @@ const Junior: React.FC<JuniorPropsType> = (props) => {
         return defaultState;
     }
 
-    function getDataFromStore() {
+    const getDataFromStore = useCallback( () => {
         const newValue: string = restoreState<string>('test', '0');
-        console.log(newValue);
         setValue(newValue);
-    }
+    }, []);
 
     //LOADER
-    function showLoader() {
+    const showLoader = useCallback(() => {
         props.setLoading(true);
         setTimeout(() => {
             props.setLoading(false);
-        }, 10000)
-    }
+        }, 3000)
+    }, []);
 
     return (
         <>
