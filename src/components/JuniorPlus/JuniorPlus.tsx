@@ -1,9 +1,10 @@
 import React from 'react';
+import style from './JuniorPlus.module.css'
 
 export const JuniorPlus = () => {
     return (
-        <div>
-            <h3>JuniorPlus</h3>
+        <div className={style.container}>
+            <h1>JuniorPlus</h1>
         </div>
     )
 };
