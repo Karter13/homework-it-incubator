@@ -10,7 +10,6 @@ type Theme = {
 }
 // type ThemeJuniorPlusType = {
 //     light: Theme
-//     middle: Theme
 //     dark: Theme
 // }
 
