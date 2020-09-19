@@ -6,7 +6,7 @@ export type Theme = {
     theme: string
 }
 
-const initialState: Theme  = {
+const initialState: Theme = {
     theme: 'start'
 };
 
