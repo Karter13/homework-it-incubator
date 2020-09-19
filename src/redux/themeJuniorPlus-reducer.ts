@@ -2,39 +2,20 @@ import {ActionsType} from './redux-store';
 
 const CHANGE_THEME = 'CHANGE_THEME';
 
-type Theme = {
-    theme: {
-        color: string | null,
-        backgroundColor: string | null,
-    }
+export type Theme = {
+    theme: string
 }
-// type ThemeJuniorPlusType = {
-//     light: Theme
-//     dark: Theme
-// }
 
-const initialState: Theme = {
-    theme: {
-        color: 'black',
-        backgroundColor: '#a2a4a9'
-    }
-
-    // light: {
-    //     color: 'black',
-    //     backgroundColor: 'white'
-    // },
-    // dark: {
-    //     color: 'white',
-    //     backgroundColor: 'black'
-    // },
+const initialState: Theme  = {
+    theme: 'start'
 };
 
-export const themeJuniorPlusReducer = (state: Theme = initialState, action: ActionsType) => {
+export const themeJuniorPlusReducer = (state = initialState, action: ActionsType) => {
     switch (action.type) {
         case CHANGE_THEME: {
             return {
                 ...state,
-
+                theme: action.theme
             }
         }
         default:

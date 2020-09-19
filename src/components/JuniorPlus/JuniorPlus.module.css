@@ -1,5 +1,19 @@
 .container {
-    background-color: #a2a4a9;
     text-align: center;
     height: 100vh;
+}
+
+.container1 {
+    background-color: #a2a4a9;
+    color: black;
+}
+
+.container2 {
+    background-color:black;
+    color: white;
+}
+
+.container3 {
+    background-color: #2816a9;
+    color: #56ff1a;
 }
