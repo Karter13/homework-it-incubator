@@ -15,15 +15,13 @@ type JuniorPlusPropsype = {
 const JuniorPlus: React.FC<JuniorPlusPropsype> = (props) => {
     const [radioValue, setRadioValue] = useState<Array<RadioType>>([
         {id: 1, name: 'start', checked: true},
-        {id: 2, name: 'Light', checked: false},
-        {id: 3, name: 'Dark', checked: false},
+        {id: 2, name: 'light', checked: false},
+        {id: 3, name: 'dark', checked: false},
     ]);
 
+    // let classNameStyle = props.theme.theme === 'start' ? style.container1 : props.theme.theme === 'Light' ? style.container2 : style.container3;
 
-    // const [classNameStyle, setClassNameStyle] = useState<any>(style.container1);
-
-    let classNameStyle = props.theme.theme === 'start' ? style.container1 : props.theme.theme === 'Light' ? style.container2 : style.container3;
-
+    const classNameStyle = style[props.theme.theme];
 
     const changeRadio = useCallback((id: number, value: any | boolean) => {
         radioValue.map(r => {

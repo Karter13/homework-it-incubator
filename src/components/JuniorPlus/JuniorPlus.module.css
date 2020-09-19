@@ -3,17 +3,17 @@
     height: 100vh;
 }
 
-.container1 {
+.start {
     background-color: #a2a4a9;
     color: black;
 }
 
-.container2 {
+.light {
     background-color:black;
     color: white;
 }
 
-.container3 {
+.dark {
     background-color: #2816a9;
     color: #56ff1a;
 }
