@@ -21,3 +21,8 @@
 .blockRequest {
     margin-top: 20px;
 }
+
+.answer {
+    margin-top: 20px;
+    font-weight: bold;
+}

@@ -11,7 +11,8 @@ type RequestPropsType = {
 
 export const Request: React.FC<RequestPropsType> = (props) => {
 
-    const [value, setValue] = useState(false)
+    const [value, setValue] = useState(false);
+    const [response, setResponse] = useState<boolean | string >('');
 
     const changeValue = (value: boolean) => {
         setValue(value);
@@ -20,19 +21,20 @@ export const Request: React.FC<RequestPropsType> = (props) => {
     const  changeStatus = () => {
         requestAPI.createStatus(value)
             .then((res) => {
-                debugger
-
+                setResponse(res.data.yourBody.success);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                const error = err.response ? err.response.data.info : err.message;
+                setResponse(error);
+            });
 
-        props.setValueCheckBox(value)
     };
 
     return (
         <div className={style.blockRequest}>
             <Button click={changeStatus} value={'request'}/>
             <Checkbox checkboxValue={value} changeValue={changeValue}/>
-            <div>{props.success.toString()}</div>
+            <div className={style.answer}>{response.toString().toUpperCase()}</div>
         </div>
     )
 };
