@@ -5,10 +5,14 @@ import {RadioType} from '../Junior/Junior';
 import {connect} from 'react-redux';
 import {GlobalStateType} from '../../redux/redux-store';
 import {setTheme, Theme} from '../../redux/themeJuniorPlus-reducer';
+import {Request} from './Request';
+import {setValueCheckBox} from '../../redux/request-reducer';
 
 type JuniorPlusPropsype = {
     theme: Theme
     setTheme: (theme: string) => void
+    success: boolean
+    setValueCheckBox: (checkValue: boolean) => void
 
 }
 
@@ -40,6 +44,7 @@ const JuniorPlus: React.FC<JuniorPlusPropsype> = (props) => {
         <div className={`${style.container} ${classNameStyle}`}>
             <h1>JuniorPlus</h1>
             <Radio radioValue={radioValue} onChange={changeRadio}/>
+            <Request success={props.success} setValueCheckBox={props.setValueCheckBox}/>
         </div>
 
     )
@@ -47,8 +52,9 @@ const JuniorPlus: React.FC<JuniorPlusPropsype> = (props) => {
 
 
 const mapStateToProps = (store: GlobalStateType) => ({
-    theme: store.theme
+    theme: store.theme,
+    success: store.juniorPlusCheckBox.success
 });
 
-export default connect(mapStateToProps, {setTheme})(JuniorPlus);
+export default connect(mapStateToProps, {setTheme, setValueCheckBox})(JuniorPlus);
 
